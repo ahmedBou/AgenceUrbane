@@ -1,0 +1,67 @@
+{{>header}}
+<div class="container contact-form">
+    <form method="POST" action="/message">
+        <input type="hidden" name="_csrf" value="{{csrf}}">
+        <h3>Choisir le departement</h3>
+        <div class="select-service">
+            <label for="formGroupExampleInput">Departement</label>
+            <select id="select" name="service">
+                {{#each datas}}
+                <option>{{this.name}}</option>
+                {{/each}}
+            </select>
+        <h3>votre reclamation</h3>
+            <div class="column">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea name="txtMsg" class="form-control" placeholder="Your Message *"
+                            style="width: 100%; height: 150px;"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="btnSubmit" class="btnContact" value="Send Message" />
+                </div>
+            </div>
+    </form>
+</div>
+<div>
+    <table>
+        <tr>
+            {{!-- <td>name</td> --}}
+            <td>message</td>
+        </tr>
+        {{#each reclamation}}
+        <tr>
+            {{!-- <td>{{this.name}}</td> --}}
+            <td>{{this.a_msg}}</td>
+            <td>{{this.name_departement}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Departement</th>
+            <th scope="col">Reclamation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {{#each reclamation}}
+                <th>{{this.id}}</th>
+                {{!-- <td>{{this.name}}</td> --}}
+                <td>{{this.a_msg}}</td>
+                <td>{{this.name_departement}}</td>
+            {{/each}}
+        </tr>
+    </tbody>
+</table>
+{{>footer}}
