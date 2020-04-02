@@ -15,8 +15,6 @@ app.use(bodyParser.json());
 const publicDirectoryPath = path.join(__dirname, './public');
 // console.log(__dirname);
 
-
-
 const viewPath = path.join(__dirname, './templates/views')
 const partialsPath = path.join(__dirname, './templates/partials')
 
@@ -32,7 +30,7 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(path.join(publicDirectoryPath)))
 
 // HomePage
-app.get('', (req, res) => {
+app.get('/index', (req, res) => {
   res.render('index')
 })
 
@@ -114,7 +112,11 @@ app.post('/message', (req, res) => {
   })
 })
 // end of rec section
-
+// ***********************************************************************************
+// l'inscription
+app.get('/inscription', (req, res)=>{
+  res.render('inscription')
+})
 // Page not found
 app.get('*', (res, req) => {
   req.render("404")
